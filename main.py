@@ -12,7 +12,7 @@ def write_to_log(action, when, mode="a"):
     open_file.close()
 
 
-# doesn't check by day, month, year
+# ignores day, month, year
 # MAKE IT SO IT CHECKS FOR MOVE, NOT JUST '#'
 def find_last_log():
     file_name_op = "muv_log.txt"

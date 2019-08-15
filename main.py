@@ -12,6 +12,7 @@ def write_to_log(action, when, mode="a"):
     open_file.close()
 
 
+# NOTES:
 # ignores day, month, year
 # MAKE IT SO IT CHECKS FOR MOVE, NOT JUST '#'
 def find_last_log():
@@ -52,6 +53,23 @@ def find_last_log():
     return [int(hour), int(minute), int(sec)]
 
 
+def find_time_difference(now_time_list, difference_time_list):
+    hours = now_time_list[0] - difference_time_list[0]
+
+    minutes = now_time_list[1] - difference_time_list[1]
+    if minutes < 0:
+        hours -= 1
+        minutes += 60
+
+    seconds = now_time_list[2] - difference_time_list[2]
+    if seconds < 0:
+        minutes -= 1
+        seconds += 60
+
+    difference_time_list = [hours, minutes, seconds]
+    return difference_time_list
+
+
 first = True
 while 1:
     now = datetime.datetime.now()
@@ -64,11 +82,12 @@ while 1:
 
     now_time_data_list = [now_hour, now_minute, now_sec]
 
-    # THIS STATES THE TIME, NOT THE DIFFERENCE!
     if first:
         status = "Welcome!"
     else:
-        status = "You last moved " + str(find_last_log()) + " ago."
+        compare_time_list = find_time_difference(now_time_data_list, find_last_log())
+        status = "You last moved " + str(compare_time_list[0]) + " hours, " + str(compare_time_list[1]) +\
+                 " minutes, and " + str(compare_time_list[2]) + " seconds ago."
     display = pretty_date_and_time_data + "\n" + status
 
     if first:
@@ -80,3 +99,18 @@ while 1:
 
     if com == 'm':
         write_to_log("Moved", date_and_time_data)
+
+    # this messes stuff up if the move that you enter wasn't the latest move
+    if com == 'e':
+        s = "00"
+        print("Manual move entry:")
+        h = input("Enter hour:\n")
+        m = input("Enter minute:\n")
+        s = input("Enter second (optional):\n")
+        if s == "":
+            s = "00"
+
+        input_date_and_time_data = now.strftime("Y%Y-M%m-D%d")
+        input_date_and_time_data += "-H" + h + "-m" + m + "-S" + s
+
+        write_to_log("Moved", input_date_and_time_data)

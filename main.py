@@ -98,6 +98,7 @@ while 1:
     com = input()
 
     if com == 'm':
+        print("Moving...")
         write_to_log("Moved", date_and_time_data)
 
     # this messes stuff up if the move that you enter wasn't the latest move
@@ -115,8 +116,11 @@ while 1:
 
         write_to_log("Moved", input_date_and_time_data)
 
-    if com == 'i':
-        write_to_log("Punched_In", date_and_time_data)
-
-    if com == 'o':
-        write_to_log("Punched_Out", date_and_time_data)
+    # These are not fully functional yet:
+    # if com == 'i':
+    #     print("Punching In...")
+    #     write_to_log("Punched_In", date_and_time_data)
+    #
+    # if com == 'o':
+    #     print("Punching Out...")
+    #     write_to_log("Punched_Out", date_and_time_data)

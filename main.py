@@ -114,3 +114,9 @@ while 1:
         input_date_and_time_data += "-H" + h + "-m" + m + "-S" + s
 
         write_to_log("Moved", input_date_and_time_data)
+
+    if com == 'i':
+        write_to_log("Punched_In", date_and_time_data)
+
+    if com == 'o':
+        write_to_log("Punched_Out", date_and_time_data)

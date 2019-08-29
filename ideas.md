@@ -8,4 +8,6 @@
 
 -make it constantly refresh to get a realtime display -threading
 
+-make new staging/other branch
+
 -set up github project

@@ -1,2 +1,2 @@
 # muv
-- a tool to track the time since you last moved around
+muv is a tool to track the time since you last moved around.

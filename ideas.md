@@ -7,3 +7,5 @@
 -make a new log file with date in title everytime, instead of overwriting?
 
 -make it constantly refresh to get a realtime display -threading
+
+-set up github project
